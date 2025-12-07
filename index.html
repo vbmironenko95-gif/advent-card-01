@@ -4,11 +4,17 @@
   <meta charset="UTF-8">
   <title>Адвент-картка 01</title>
   <style>
+    body {
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: sans-serif;
+    }
+
     .card-container {
       perspective: 1000px;
       width: 260px;
       height: 260px;
-      margin: 40px auto;
+      margin: 60px auto;
     }
 
     .card {
@@ -26,7 +32,7 @@
       height: 100%;
       backface-visibility: hidden;
       background-repeat: no-repeat;
-     background-size: contain;
+      background-size: cover;
       background-position: center;
       border-radius: 24px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.15);
@@ -40,23 +46,18 @@
       background-image: url("card-01-back.png");
       transform: rotateY(180deg);
     }
+
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
   </style>
 </head>
 <body>
-  <div class="card-container">
-    <div class="card" id="card">
+  <div class="card-container" onclick="document.querySelector('.card').classList.toggle('flipped')">
+    <div class="card">
       <div class="card-side front"></div>
       <div class="card-side back"></div>
     </div>
   </div>
-
-  <script>
-    const card = document.getElementById('card');
-    let flipped = false;
-    card.addEventListener('click', () => {
-      flipped = !flipped;
-      card.style.transform = flipped ? 'rotateY(180deg)' : 'rotateY(0)';
-    });
-  </script>
 </body>
 </html>
